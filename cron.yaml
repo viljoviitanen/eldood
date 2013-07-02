@@ -1,0 +1,4 @@
+cron:
+- description: hourly purge of old events. parameter is days.
+  url: /cron/30
+  schedule: every 100 minutes

@@ -5,6 +5,10 @@ api_version: 1
 threadsafe: yes
 
 handlers:
+- url: /cron/.*
+  script: cron.app
+  login: admin
+
 - url: /img
   static_dir: img
 
