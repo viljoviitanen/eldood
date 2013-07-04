@@ -126,6 +126,9 @@ function load() {
   if(location.hash=='#new') {
     html+='<button onclick="saveevent()">Save event</button>'
   }
+  else {
+    html+='<button onclick="init()">Refresh event</button>'
+  }
   $('#event').html(html)
   $('.choice').on('change', function() {
     var chk=0
