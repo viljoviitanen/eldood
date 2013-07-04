@@ -128,9 +128,25 @@ function load() {
   }
   $('#event').html(html)
   $('.choice').on('change', function() {
-    alert($(this).data('user') + ' ' + $(this).data('choice') + ' ' + $(this).prop('checked'))
+    var chk=0
+    if ($(this).prop('checked')) { chk=1 }
+    var key='t-'+$(this).data('user')+'-'+$(this).data('choice')
+    ev[key]=chk
+    if(location.hash!='#new') {
+      var update={}
+      update[key]=chk
+      $.getJSON('/update/'+location.hash.substr(1)+'/'+encodeURIComponent(JSON.stringify(update)),function(data) {
+        if(!data.update) {
+          alert("Could not save event.")
+          return
+        }
+        ev=data.update
+        load()
+      })
+    }
   })
 }
+
 
 function saveevent() {
   $.getJSON('/update/'+location.hash.substr(1)+'/'+encodeURIComponent(JSON.stringify(ev)),function(data) {
@@ -224,7 +240,8 @@ function hash(s){
     hash &= hash
   })
   var t = new Date().getTime()
-  return hash^t;
+  //time needs to be an "integer".
+  return hash^(t|0);
 };
 
 //sort goes wrong if more than 99 choices or users. too bad...
