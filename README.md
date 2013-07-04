@@ -5,9 +5,6 @@ a simple doodle.com inspired tool
 
 In a nutshell: find a best "option" for an "event" for all participants. The option could be scheduling time for a meeting - list all times as choices, then let everyone mark which times suit them. Or, it could be about choosing the restaurant you're going have dinner.
 
-NOT YET WORKING
-===============
-
 Some design goals
 -----------------
 - No authentication/registration. Just create an event, and share the url with the people you want to.
